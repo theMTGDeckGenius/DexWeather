@@ -4,15 +4,20 @@ package com.sample.michaelwheeler.dexweather.objects;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Flags implements Parcelable {
 
-    private final String SOURCES = "sources";
-    private final String ISD_STATIONS = "isdStations";
-    private final String UNITS = "units";
+    private static final String SOURCES = "sources";
+    private static final String ISD_STATIONS = "isdStations";
+    private static final String UNITS = "units";
     private List<String> sources = null;
     private List<String> isdStations = null;
     private String units;
@@ -69,6 +74,31 @@ public class Flags implements Parcelable {
         dest.writeList(sources);
         dest.writeList(isdStations);
         dest.writeValue(units);
+    }
+
+    public static Flags buildFromJSONObject(JSONObject jsonObject) {
+        Flags flags = new Flags();
+        if (jsonObject != null){
+            flags.setSources(convertJSONArrayToList(jsonObject.optJSONArray(SOURCES)));
+            flags.setIsdStations(convertJSONArrayToList(jsonObject.optJSONArray(ISD_STATIONS)));
+            flags.setUnits(jsonObject.optString(UNITS));
+        }
+        return flags;
+    }
+
+    private static List<String> convertJSONArrayToList(JSONArray array) {
+        List<String> tags = new ArrayList<>();
+
+        if (array != null) {
+            for (int x = 0; x < array.length(); x++) {
+                try {
+                    tags.add(array.getString(x));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return tags;
     }
 
     public int describeContents() {

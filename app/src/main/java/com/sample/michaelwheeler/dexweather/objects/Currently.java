@@ -4,30 +4,32 @@ package com.sample.michaelwheeler.dexweather.objects;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Currently implements Parcelable {
 
-    private final String TIME = "time";
-    private final String SUMMARY = "summary";
-    private final String ICON = "icon";
-    private final String NEAREST_STORM_DISTANCE = "nearestStormDistance";
-    private final String NEAREST_STORM_BEARING = "nearestStormBearing";
-    private final String PRECIP_INTENSITY = "precipIntensity";
-    private final String PRECIP_PROBABILITY = "precipProbability";
-    private final String TEMPERATURE = "temperature";
-    private final String APPARENT_TEMPERATURE = "apparentTemperature";
-    private final String DEW_POINT = "dewPoint";
-    private final String HUMIDITY = "humidity";
-    private final String PRESSURE = "pressure";
-    private final String WIND_SPEED = "windSpeed";
-    private final String WIND_GUST = "windGust";
-    private final String WIND_BEARING = "windBearing";
-    private final String CLOUD_COVER = "cloudCover";
-    private final String UV_INDEX = "uvIndex";
-    private final String VISIBILITY = "visibility";
-    private final String OZONE = "ozone";
+    private static final String TIME = "time";
+    private static final String SUMMARY = "summary";
+    private static final String ICON = "icon";
+    private static final String NEAREST_STORM_DISTANCE = "nearestStormDistance";
+    private static final String NEAREST_STORM_BEARING = "nearestStormBearing";
+    private static final String PRECIP_INTENSITY = "precipIntensity";
+    private static final String PRECIP_PROBABILITY = "precipProbability";
+    private static final String TEMPERATURE = "temperature";
+    private static final String APPARENT_TEMPERATURE = "apparentTemperature";
+    private static final String DEW_POINT = "dewPoint";
+    private static final String HUMIDITY = "humidity";
+    private static final String PRESSURE = "pressure";
+    private static final String WIND_SPEED = "windSpeed";
+    private static final String WIND_GUST = "windGust";
+    private static final String WIND_BEARING = "windBearing";
+    private static final String CLOUD_COVER = "cloudCover";
+    private static final String UV_INDEX = "uvIndex";
+    private static final String VISIBILITY = "visibility";
+    private static final String OZONE = "ozone";
     private int time;
     private String summary;
     private String icon;
@@ -261,6 +263,33 @@ public class Currently implements Parcelable {
         dest.writeValue(visibility);
         dest.writeValue(ozone);
     }
+
+    public static Currently buildFromJSONObject(JSONObject jsonObject) {
+        Currently currently = new Currently();
+        if (jsonObject != null){
+            currently.setApparentTemperature(jsonObject.optDouble(APPARENT_TEMPERATURE));
+            currently.setCloudCover(jsonObject.optInt(CLOUD_COVER));
+            currently.setDewPoint(jsonObject.optInt(DEW_POINT));
+            currently.setHumidity(jsonObject.optDouble(HUMIDITY));
+            currently.setIcon(jsonObject.optString(ICON));
+            currently.setNearestStormBearing(jsonObject.optInt(NEAREST_STORM_BEARING));
+            currently.setNearestStormDistance(jsonObject.optInt(NEAREST_STORM_DISTANCE));
+            currently.setOzone(jsonObject.optDouble(OZONE));
+            currently.setPrecipIntensity(jsonObject.optInt(PRECIP_INTENSITY));
+            currently.setPrecipProbability(jsonObject.optInt(PRECIP_PROBABILITY));
+            currently.setPressure(jsonObject.optDouble(PRESSURE));
+            currently.setSummary(jsonObject.optString(SUMMARY));
+            currently.setTemperature(jsonObject.optDouble(TEMPERATURE));
+            currently.setTime(jsonObject.optInt(TIME));
+            currently.setUvIndex(jsonObject.optInt(UV_INDEX));
+            currently.setVisibility(jsonObject.optInt(VISIBILITY));
+            currently.setWindBearing(jsonObject.optInt(WIND_BEARING));
+            currently.setWindGust(jsonObject.optDouble(WIND_GUST));
+            currently.setWindSpeed(jsonObject.optDouble(WIND_SPEED));
+        }
+        return currently;
+    }
+
 
     public int describeContents() {
         return 0;

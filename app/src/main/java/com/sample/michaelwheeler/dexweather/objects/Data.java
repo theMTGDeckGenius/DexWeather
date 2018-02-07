@@ -4,50 +4,53 @@ package com.sample.michaelwheeler.dexweather.objects;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class Datum implements Parcelable {
+import java.util.ArrayList;
+import java.util.List;
 
-    private final String TIME = "time";
-    private final String SUMMARY = "summary";
-    private final String ICON = "icon";
-    private final String SUN_RISE_TIME = "sunriseTime";
-    private final String SUNSET_TIME = "sunsetTime";
-    private final String MOON_PHASE = "moonPhase";
-    private final String PRECIP_INTENSITY = "precipIntensity";
-    private final String PRECIP_INTENSITY_MAX = "precipIntensityMax";
-    private final String PRECIP_INTENSITY_MAX_TIME = "precipIntensityMaxTime";
-    private final String PRECIP_PROBABILITY = "precipProbability";
-    private final String PRECIP_TYPE = "precipType";
-    private final String TEMPERATURE_HIGH = "temperatureHigh";
-    private final String TEMPERATURE_HIGHTIME = "temperatureHighTime";
-    private final String TEMPERATURE_LOW = "temperatureLow";
-    private final String TEMPERATURE_LOWTIME = "temperatureLowTime";
-    private final String APPARENT_TEMPERATURE_HIGH = "apparentTemperatureHigh";
-    private final String APPARENT_TEMPERATURE_HIGH_TIME = "apparentTemperatureHighTime";
-    private final String APPARENT_TEMPERATURE_LOW = "apparentTemperatureLow";
-    private final String APPARENT_TEMPERATURE_LOW_TIME = "apparentTemperatureLowTime";
-    private final String DEW_POINT = "dewPoint";
-    private final String HUMIDITY = "humidity";
-    private final String PRESSURE = "pressure";
-    private final String WIND_SPEED = "windSpeed";
-    private final String WIND_GUST = "windGust";
-    private final String WIND_GUSTTIME = "windGustTime";
-    private final String WIND_BEARING = "windBearing";
-    private final String CLOUD_COVER = "cloudCover";
-    private final String UV_INDEX = "uvIndex";
-    private final String UV_INDEX_TIME = "uvIndexTime";
-    private final String VISIBILITY = "visibility";
-    private final String OZONE = "ozone";
-    private final String TEMPERATURE_MIN = "temperatureMin";
-    private final String TEMPERATURE_MIN_TIME = "temperatureMinTime";
-    private final String TEMPERATURE_MAX = "temperatureMax";
-    private final String TEMPERATURE_MAX_TIME = "temperatureMaxTime";
-    private final String APPARENT_TEMPERATURE_MIN = "apparentTemperatureMin";
-    private final String APPARENT_TEMPERATURE_MIN_TIME = "apparentTemperatureMinTime";
-    private final String APPARENT_TEMPERATURE_MAX = "apparentTemperatureMax";
-    private final String APPARENT_TEMPERATURE_MAX_TIME = "apparentTemperatureMaxTime";
+public class Data implements Parcelable {
+
+    private static final String TIME = "time";
+    private static final String SUMMARY = "summary";
+    private static final String ICON = "icon";
+    private static final String SUN_RISE_TIME = "sunriseTime";
+    private static final String SUNSET_TIME = "sunsetTime";
+    private static final String MOON_PHASE = "moonPhase";
+    private static final String PRECIP_INTENSITY = "precipIntensity";
+    private static final String PRECIP_INTENSITY_MAX = "precipIntensityMax";
+    private static final String PRECIP_INTENSITY_MAX_TIME = "precipIntensityMaxTime";
+    private static final String PRECIP_PROBABILITY = "precipProbability";
+    private static final String PRECIP_TYPE = "precipType";
+    private static final String TEMPERATURE_HIGH = "temperatureHigh";
+    private static final String TEMPERATURE_HIGHTIME = "temperatureHighTime";
+    private static final String TEMPERATURE_LOW = "temperatureLow";
+    private static final String TEMPERATURE_LOWTIME = "temperatureLowTime";
+    private static final String APPARENT_TEMPERATURE_HIGH = "apparentTemperatureHigh";
+    private static final String APPARENT_TEMPERATURE_HIGH_TIME = "apparentTemperatureHighTime";
+    private static final String APPARENT_TEMPERATURE_LOW = "apparentTemperatureLow";
+    private static final String APPARENT_TEMPERATURE_LOW_TIME = "apparentTemperatureLowTime";
+    private static final String DEW_POINT = "dewPoint";
+    private static final String HUMIDITY = "humidity";
+    private static final String PRESSURE = "pressure";
+    private static final String WIND_SPEED = "windSpeed";
+    private static final String WIND_GUST = "windGust";
+    private static final String WIND_GUSTTIME = "windGustTime";
+    private static final String WIND_BEARING = "windBearing";
+    private static final String CLOUD_COVER = "cloudCover";
+    private static final String UV_INDEX = "uvIndex";
+    private static final String UV_INDEX_TIME = "uvIndexTime";
+    private static final String VISIBILITY = "visibility";
+    private static final String OZONE = "ozone";
+    private static final String TEMPERATURE_MIN = "temperatureMin";
+    private static final String TEMPERATURE_MIN_TIME = "temperatureMinTime";
+    private static final String TEMPERATURE_MAX = "temperatureMax";
+    private static final String TEMPERATURE_MAX_TIME = "temperatureMaxTime";
+    private static final String APPARENT_TEMPERATURE_MIN = "apparentTemperatureMin";
+    private static final String APPARENT_TEMPERATURE_MIN_TIME = "apparentTemperatureMinTime";
+    private static final String APPARENT_TEMPERATURE_MAX = "apparentTemperatureMax";
+    private static final String APPARENT_TEMPERATURE_MAX_TIME = "apparentTemperatureMaxTime";
     private int time;
     private String summary;
     private String icon;
@@ -87,20 +90,20 @@ public class Datum implements Parcelable {
     private int apparentTemperatureMinTime;
     private double apparentTemperatureMax;
     private int apparentTemperatureMaxTime;
-    public final static Parcelable.Creator<Datum> CREATOR = new Creator<Datum>() {
+    public final static Parcelable.Creator<Data> CREATOR = new Creator<Data>() {
 
         @SuppressWarnings({"unchecked"})
-        public Datum createFromParcel(Parcel in) {
-            return new Datum(in);
+        public Data createFromParcel(Parcel in) {
+            return new Data(in);
         }
 
-        public Datum[] newArray(int size) {
-            return (new Datum[size]);
+        public Data[] newArray(int size) {
+            return (new Data[size]);
         }
 
     };
 
-    protected Datum(Parcel in) {
+    protected Data(Parcel in) {
         this.time = ((int) in.readValue((int.class.getClassLoader())));
         this.summary = ((String) in.readValue((String.class.getClassLoader())));
         this.icon = ((String) in.readValue((String.class.getClassLoader())));
@@ -142,7 +145,7 @@ public class Datum implements Parcelable {
         this.apparentTemperatureMaxTime = ((int) in.readValue((int.class.getClassLoader())));
     }
 
-    public Datum() {
+    public Data() {
     }
 
     public int getTime() {
@@ -497,6 +500,58 @@ public class Datum implements Parcelable {
         dest.writeValue(apparentTemperatureMinTime);
         dest.writeValue(apparentTemperatureMax);
         dest.writeValue(apparentTemperatureMaxTime);
+    }
+
+    public static List<Data> buildFromJSONObject(JSONArray jsonArray) {
+        List<Data> returnData = new ArrayList<>();
+        if (jsonArray != null){
+            for (int x = 0; x < jsonArray.length(); x++){
+                JSONObject jsonObject = jsonArray.optJSONObject(x);
+                Data data = new Data();
+                data.setTime(jsonObject.optInt(SUMMARY));
+                data.setSummary(jsonObject.optString(SUMMARY));
+                data.setIcon(jsonObject.optString(SUMMARY));
+                data.setSunriseTime(jsonObject.optInt(SUMMARY));
+                data.setSunsetTime(jsonObject.optInt(SUMMARY));
+                data.setMoonPhase(jsonObject.optDouble(SUMMARY));
+                data.setPrecipIntensity(jsonObject.optDouble(SUMMARY));
+                data.setPrecipIntensityMax(jsonObject.optDouble(SUMMARY));
+                data.setPrecipIntensityMaxTime(jsonObject.optInt(SUMMARY));
+                data.setPrecipProbability(jsonObject.optDouble(SUMMARY));
+                data.setPrecipType(jsonObject.optString(SUMMARY));
+                data.setTemperatureHigh(jsonObject.optDouble(SUMMARY));
+                data.setTemperatureHighTime(jsonObject.optInt(SUMMARY));
+                data.setTemperatureLow(jsonObject.optDouble(SUMMARY));
+                data.setTemperatureLowTime(jsonObject.optInt(SUMMARY));
+                data.setApparentTemperatureHigh(jsonObject.optDouble(SUMMARY));
+                data.setApparentTemperatureHighTime(jsonObject.optInt(SUMMARY));
+                data.setApparentTemperatureLow(jsonObject.optDouble(SUMMARY));
+                data.setApparentTemperatureLowTime(jsonObject.optInt(SUMMARY));
+                data.setDewPoint(jsonObject.optDouble(SUMMARY));
+                data.setHumidity(jsonObject.optDouble(SUMMARY));
+                data.setPressure(jsonObject.optDouble(SUMMARY));
+                data.setWindSpeed(jsonObject.optDouble(SUMMARY));
+                data.setWindGust(jsonObject.optDouble(SUMMARY));
+                data.setWindGustTime(jsonObject.optInt(SUMMARY));
+                data.setWindBearing(jsonObject.optInt(SUMMARY));
+                data.setCloudCover(jsonObject.optDouble(SUMMARY));
+                data.setUvIndex(jsonObject.optInt(SUMMARY));
+                data.setUvIndexTime(jsonObject.optInt(SUMMARY));
+                data.setVisibility(jsonObject.optInt(SUMMARY));
+                data.setOzone(jsonObject.optDouble(SUMMARY));
+                data.setTemperatureMin(jsonObject.optDouble(SUMMARY));
+                data.setTemperatureMinTime(jsonObject.optInt(SUMMARY));
+                data.setTemperatureMax(jsonObject.optDouble(SUMMARY));
+                data.setTemperatureMaxTime(jsonObject.optInt(SUMMARY));
+                data.setApparentTemperatureMin(jsonObject.optDouble(SUMMARY));
+                data.setApparentTemperatureMinTime(jsonObject.optInt(SUMMARY));
+                data.setApparentTemperatureMax(jsonObject.optDouble(SUMMARY));
+                data.setApparentTemperatureMaxTime(jsonObject.optInt(SUMMARY));
+                returnData.add(data);
+            }
+
+        }
+        return returnData;
     }
 
     public int describeContents() {

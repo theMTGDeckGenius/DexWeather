@@ -4,20 +4,19 @@ package com.sample.michaelwheeler.dexweather.objects;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.json.JSONObject;
 
-public class Forcast implements Parcelable {
+public class Forecast implements Parcelable {
 
-    private final String LATITUDE = "latitude";
-    private final String LONGITUDE = "longitude";
-    private final String TIMEZONE =  "timezone";
-    private final String CURRENTLY = "currently";
-    private final String MINUTELY = "minutely";
-    private final String HOURLY = "hourly";
-    private final String DAILY = "daily";
-    private final String FLAGS = "flags";
-    private final String OFFSET = "offset";
+    private static final String LATITUDE = "latitude";
+    private static final String LONGITUDE = "longitude";
+    private static final String TIMEZONE =  "timezone";
+    private static final String CURRENTLY = "currently";
+    private static final String MINUTELY = "minutely";
+    private static final String HOURLY = "hourly";
+    private static final String DAILY = "daily";
+    private static final String FLAGS = "flags";
+    private static final String OFFSET = "offset";
     private double latitude;
     private double longitude;
     private String timezone;
@@ -27,20 +26,20 @@ public class Forcast implements Parcelable {
     private Daily daily;
     private Flags flags;
     private int offset;
-    public final static Parcelable.Creator<Forcast> CREATOR = new Creator<Forcast>() {
+    public final static Parcelable.Creator<Forecast> CREATOR = new Creator<Forecast>() {
 
         @SuppressWarnings({"unchecked"})
-        public Forcast createFromParcel(Parcel in) {
-            return new Forcast(in);
+        public Forecast createFromParcel(Parcel in) {
+            return new Forecast(in);
         }
 
-        public Forcast[] newArray(int size) {
-            return (new Forcast[size]);
+        public Forecast[] newArray(int size) {
+            return (new Forecast[size]);
         }
 
     };
 
-    protected Forcast(Parcel in) {
+    protected Forecast(Parcel in) {
         this.latitude = ((double) in.readValue((double.class.getClassLoader())));
         this.longitude = ((double) in.readValue((double.class.getClassLoader())));
         this.timezone = ((String) in.readValue((String.class.getClassLoader())));
@@ -52,7 +51,7 @@ public class Forcast implements Parcelable {
         this.offset = ((int) in.readValue((int.class.getClassLoader())));
     }
 
-    public Forcast() {
+    public Forecast() {
     }
 
     public double getLatitude() {
@@ -137,6 +136,22 @@ public class Forcast implements Parcelable {
         dest.writeValue(daily);
         dest.writeValue(flags);
         dest.writeValue(offset);
+    }
+
+    public static Forecast buildFromJSONObject(JSONObject jsonObject) {
+        Forecast forecast = new Forecast();
+        if (jsonObject != null){
+            forecast.setLatitude(jsonObject.optDouble(LATITUDE));
+            forecast.setLongitude(jsonObject.optDouble(LONGITUDE));
+            forecast.setTimezone(jsonObject.optString(TIMEZONE));
+            forecast.setCurrently(Currently.buildFromJSONObject(jsonObject.optJSONObject(CURRENTLY)));
+            forecast.setMinutely(Minutely.buildFromJSONObject(jsonObject.optJSONObject(MINUTELY)));
+            forecast.setHourly(Hourly.buildFromJSONObject(jsonObject.optJSONObject(HOURLY)));
+            forecast.setDaily(Daily.buildFromJSONObject(jsonObject.optJSONObject(DAILY)));
+            forecast.setFlags(Flags.buildFromJSONObject(jsonObject.optJSONObject(FLAGS)));
+            forecast.setOffset(jsonObject.optInt(OFFSET));
+        }
+        return forecast;
     }
 
     public int describeContents() {

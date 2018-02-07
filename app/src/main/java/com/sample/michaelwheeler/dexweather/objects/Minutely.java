@@ -4,18 +4,18 @@ package com.sample.michaelwheeler.dexweather.objects;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.HashMap;
+import org.json.JSONObject;
+
 import java.util.List;
-import java.util.Map;
 
 public class Minutely implements Parcelable {
 
-    private final String SUMMARY = "summary";
-    private final String ICON = "icon";
-    private final String DATA = "data";
+    private static final String SUMMARY = "summary";
+    private static final String ICON = "icon";
+    private static final String DATA = "data";
     private String summary;
     private String icon;
-    private List<Datum> data = null;
+    private List<Data> data = null;
     public final static Parcelable.Creator<Minutely> CREATOR = new Creator<Minutely>() {
 
         @SuppressWarnings({"unchecked"})
@@ -31,7 +31,7 @@ public class Minutely implements Parcelable {
     protected Minutely(Parcel in) {
         this.summary = ((String) in.readValue((String.class.getClassLoader())));
         this.icon = ((String) in.readValue((String.class.getClassLoader())));
-        in.readList(this.data, (Datum.class.getClassLoader()));
+        in.readList(this.data, (Data.class.getClassLoader()));
     }
 
     public Minutely() {
@@ -53,11 +53,11 @@ public class Minutely implements Parcelable {
         this.icon = icon;
     }
 
-    public List<Datum> getData() {
+    public List<Data> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<Data> data) {
         this.data = data;
     }
 
@@ -67,6 +67,16 @@ public class Minutely implements Parcelable {
         dest.writeList(data);
     }
 
+    public static Minutely buildFromJSONObject(JSONObject jsonObject) {
+        Minutely minutely = new Minutely();
+        if (jsonObject != null){
+            minutely.setSummary(jsonObject.optString(SUMMARY));
+            minutely.setData(Data.buildFromJSONObject(jsonObject.optJSONArray(DATA)));
+            minutely.setIcon(jsonObject.optString(ICON
+            ));
+        }
+        return minutely;
+    }
     public int describeContents() {
         return 0;
     }
