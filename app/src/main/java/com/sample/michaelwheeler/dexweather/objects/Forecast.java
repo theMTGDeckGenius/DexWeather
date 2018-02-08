@@ -25,7 +25,7 @@ public class Forecast implements Parcelable {
     private Hourly hourly;
     private Daily daily;
     private Flags flags;
-    private int offset;
+    private double offset;
     public final static Parcelable.Creator<Forecast> CREATOR = new Creator<Forecast>() {
 
         @SuppressWarnings({"unchecked"})
@@ -48,7 +48,7 @@ public class Forecast implements Parcelable {
         this.hourly = ((Hourly) in.readValue((Hourly.class.getClassLoader())));
         this.daily = ((Daily) in.readValue((Daily.class.getClassLoader())));
         this.flags = ((Flags) in.readValue((Flags.class.getClassLoader())));
-        this.offset = ((int) in.readValue((int.class.getClassLoader())));
+        this.offset = ((double) in.readValue((double.class.getClassLoader())));
     }
 
     public Forecast() {
@@ -118,11 +118,11 @@ public class Forecast implements Parcelable {
         this.flags = flags;
     }
 
-    public int getOffset() {
+    public double getOffset() {
         return offset;
     }
 
-    public void setOffset(int offset) {
+    public void setOffset(double offset) {
         this.offset = offset;
     }
 

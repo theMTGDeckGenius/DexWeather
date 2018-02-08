@@ -51,45 +51,45 @@ public class Data implements Parcelable {
     private static final String APPARENT_TEMPERATURE_MIN_TIME = "apparentTemperatureMinTime";
     private static final String APPARENT_TEMPERATURE_MAX = "apparentTemperatureMax";
     private static final String APPARENT_TEMPERATURE_MAX_TIME = "apparentTemperatureMaxTime";
-    private int time;
+    private double time;
     private String summary;
     private String icon;
-    private int sunriseTime;
-    private int sunsetTime;
+    private double sunriseTime;
+    private double sunsetTime;
     private double moonPhase;
     private double precipIntensity;
     private double precipIntensityMax;
-    private int precipIntensityMaxTime;
+    private double precipIntensityMaxTime;
     private double precipProbability;
     private String precipType;
     private double temperatureHigh;
-    private int temperatureHighTime;
+    private double temperatureHighTime;
     private double temperatureLow;
-    private int temperatureLowTime;
+    private double temperatureLowTime;
     private double apparentTemperatureHigh;
-    private int apparentTemperatureHighTime;
+    private double apparentTemperatureHighTime;
     private double apparentTemperatureLow;
-    private int apparentTemperatureLowTime;
+    private double apparentTemperatureLowTime;
     private double dewPoint;
     private double humidity;
     private double pressure;
     private double windSpeed;
     private double windGust;
-    private int windGustTime;
-    private int windBearing;
+    private double windGustTime;
+    private double windBearing;
     private double cloudCover;
-    private int uvIndex;
-    private int uvIndexTime;
-    private int visibility;
+    private double uvIndex;
+    private double uvIndexTime;
+    private double visibility;
     private double ozone;
     private double temperatureMin;
-    private int temperatureMinTime;
+    private double temperatureMinTime;
     private double temperatureMax;
-    private int temperatureMaxTime;
+    private double temperatureMaxTime;
     private double apparentTemperatureMin;
-    private int apparentTemperatureMinTime;
+    private double apparentTemperatureMinTime;
     private double apparentTemperatureMax;
-    private int apparentTemperatureMaxTime;
+    private double apparentTemperatureMaxTime;
     public final static Parcelable.Creator<Data> CREATOR = new Creator<Data>() {
 
         @SuppressWarnings({"unchecked"})
@@ -104,55 +104,55 @@ public class Data implements Parcelable {
     };
 
     protected Data(Parcel in) {
-        this.time = ((int) in.readValue((int.class.getClassLoader())));
+        this.time = ((double) in.readValue((double.class.getClassLoader())));
         this.summary = ((String) in.readValue((String.class.getClassLoader())));
         this.icon = ((String) in.readValue((String.class.getClassLoader())));
-        this.sunriseTime = ((int) in.readValue((int.class.getClassLoader())));
-        this.sunsetTime = ((int) in.readValue((int.class.getClassLoader())));
+        this.sunriseTime = ((double) in.readValue((double.class.getClassLoader())));
+        this.sunsetTime = ((double) in.readValue((double.class.getClassLoader())));
         this.moonPhase = ((double) in.readValue((double.class.getClassLoader())));
         this.precipIntensity = ((double) in.readValue((double.class.getClassLoader())));
         this.precipIntensityMax = ((double) in.readValue((double.class.getClassLoader())));
-        this.precipIntensityMaxTime = ((int) in.readValue((int.class.getClassLoader())));
+        this.precipIntensityMaxTime = ((double) in.readValue((double.class.getClassLoader())));
         this.precipProbability = ((double) in.readValue((double.class.getClassLoader())));
         this.precipType = ((String) in.readValue((String.class.getClassLoader())));
         this.temperatureHigh = ((double) in.readValue((double.class.getClassLoader())));
-        this.temperatureHighTime = ((int) in.readValue((int.class.getClassLoader())));
+        this.temperatureHighTime = ((double) in.readValue((double.class.getClassLoader())));
         this.temperatureLow = ((double) in.readValue((double.class.getClassLoader())));
-        this.temperatureLowTime = ((int) in.readValue((int.class.getClassLoader())));
+        this.temperatureLowTime = ((double) in.readValue((double.class.getClassLoader())));
         this.apparentTemperatureHigh = ((double) in.readValue((double.class.getClassLoader())));
-        this.apparentTemperatureHighTime = ((int) in.readValue((int.class.getClassLoader())));
+        this.apparentTemperatureHighTime = ((double) in.readValue((double.class.getClassLoader())));
         this.apparentTemperatureLow = ((double) in.readValue((double.class.getClassLoader())));
-        this.apparentTemperatureLowTime = ((int) in.readValue((int.class.getClassLoader())));
+        this.apparentTemperatureLowTime = ((double) in.readValue((double.class.getClassLoader())));
         this.dewPoint = ((double) in.readValue((double.class.getClassLoader())));
         this.humidity = ((double) in.readValue((double.class.getClassLoader())));
         this.pressure = ((double) in.readValue((double.class.getClassLoader())));
         this.windSpeed = ((double) in.readValue((double.class.getClassLoader())));
         this.windGust = ((double) in.readValue((double.class.getClassLoader())));
-        this.windGustTime = ((int) in.readValue((int.class.getClassLoader())));
-        this.windBearing = ((int) in.readValue((int.class.getClassLoader())));
+        this.windGustTime = ((double) in.readValue((double.class.getClassLoader())));
+        this.windBearing = ((double) in.readValue((double.class.getClassLoader())));
         this.cloudCover = ((double) in.readValue((double.class.getClassLoader())));
-        this.uvIndex = ((int) in.readValue((int.class.getClassLoader())));
-        this.uvIndexTime = ((int) in.readValue((int.class.getClassLoader())));
-        this.visibility = ((int) in.readValue((int.class.getClassLoader())));
+        this.uvIndex = ((double) in.readValue((double.class.getClassLoader())));
+        this.uvIndexTime = ((double) in.readValue((double.class.getClassLoader())));
+        this.visibility = ((double) in.readValue((double.class.getClassLoader())));
         this.ozone = ((double) in.readValue((double.class.getClassLoader())));
         this.temperatureMin = ((double) in.readValue((double.class.getClassLoader())));
-        this.temperatureMinTime = ((int) in.readValue((int.class.getClassLoader())));
+        this.temperatureMinTime = ((double) in.readValue((double.class.getClassLoader())));
         this.temperatureMax = ((double) in.readValue((double.class.getClassLoader())));
-        this.temperatureMaxTime = ((int) in.readValue((int.class.getClassLoader())));
+        this.temperatureMaxTime = ((double) in.readValue((double.class.getClassLoader())));
         this.apparentTemperatureMin = ((double) in.readValue((double.class.getClassLoader())));
-        this.apparentTemperatureMinTime = ((int) in.readValue((int.class.getClassLoader())));
+        this.apparentTemperatureMinTime = ((double) in.readValue((double.class.getClassLoader())));
         this.apparentTemperatureMax = ((double) in.readValue((double.class.getClassLoader())));
-        this.apparentTemperatureMaxTime = ((int) in.readValue((int.class.getClassLoader())));
+        this.apparentTemperatureMaxTime = ((double) in.readValue((double.class.getClassLoader())));
     }
 
     public Data() {
     }
 
-    public int getTime() {
+    public double getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(double time) {
         this.time = time;
     }
 
@@ -172,19 +172,19 @@ public class Data implements Parcelable {
         this.icon = icon;
     }
 
-    public int getSunriseTime() {
+    public double getSunriseTime() {
         return sunriseTime;
     }
 
-    public void setSunriseTime(int sunriseTime) {
+    public void setSunriseTime(double sunriseTime) {
         this.sunriseTime = sunriseTime;
     }
 
-    public int getSunsetTime() {
+    public double getSunsetTime() {
         return sunsetTime;
     }
 
-    public void setSunsetTime(int sunsetTime) {
+    public void setSunsetTime(double sunsetTime) {
         this.sunsetTime = sunsetTime;
     }
 
@@ -212,11 +212,11 @@ public class Data implements Parcelable {
         this.precipIntensityMax = precipIntensityMax;
     }
 
-    public int getPrecipIntensityMaxTime() {
+    public double getPrecipIntensityMaxTime() {
         return precipIntensityMaxTime;
     }
 
-    public void setPrecipIntensityMaxTime(int precipIntensityMaxTime) {
+    public void setPrecipIntensityMaxTime(double precipIntensityMaxTime) {
         this.precipIntensityMaxTime = precipIntensityMaxTime;
     }
 
@@ -244,11 +244,11 @@ public class Data implements Parcelable {
         this.temperatureHigh = temperatureHigh;
     }
 
-    public int getTemperatureHighTime() {
+    public double getTemperatureHighTime() {
         return temperatureHighTime;
     }
 
-    public void setTemperatureHighTime(int temperatureHighTime) {
+    public void setTemperatureHighTime(double temperatureHighTime) {
         this.temperatureHighTime = temperatureHighTime;
     }
 
@@ -260,11 +260,11 @@ public class Data implements Parcelable {
         this.temperatureLow = temperatureLow;
     }
 
-    public int getTemperatureLowTime() {
+    public double getTemperatureLowTime() {
         return temperatureLowTime;
     }
 
-    public void setTemperatureLowTime(int temperatureLowTime) {
+    public void setTemperatureLowTime(double temperatureLowTime) {
         this.temperatureLowTime = temperatureLowTime;
     }
 
@@ -276,11 +276,11 @@ public class Data implements Parcelable {
         this.apparentTemperatureHigh = apparentTemperatureHigh;
     }
 
-    public int getApparentTemperatureHighTime() {
+    public double getApparentTemperatureHighTime() {
         return apparentTemperatureHighTime;
     }
 
-    public void setApparentTemperatureHighTime(int apparentTemperatureHighTime) {
+    public void setApparentTemperatureHighTime(double apparentTemperatureHighTime) {
         this.apparentTemperatureHighTime = apparentTemperatureHighTime;
     }
 
@@ -292,11 +292,11 @@ public class Data implements Parcelable {
         this.apparentTemperatureLow = apparentTemperatureLow;
     }
 
-    public int getApparentTemperatureLowTime() {
+    public double getApparentTemperatureLowTime() {
         return apparentTemperatureLowTime;
     }
 
-    public void setApparentTemperatureLowTime(int apparentTemperatureLowTime) {
+    public void setApparentTemperatureLowTime(double apparentTemperatureLowTime) {
         this.apparentTemperatureLowTime = apparentTemperatureLowTime;
     }
 
@@ -340,19 +340,19 @@ public class Data implements Parcelable {
         this.windGust = windGust;
     }
 
-    public int getWindGustTime() {
+    public double getWindGustTime() {
         return windGustTime;
     }
 
-    public void setWindGustTime(int windGustTime) {
+    public void setWindGustTime(double windGustTime) {
         this.windGustTime = windGustTime;
     }
 
-    public int getWindBearing() {
+    public double getWindBearing() {
         return windBearing;
     }
 
-    public void setWindBearing(int windBearing) {
+    public void setWindBearing(double windBearing) {
         this.windBearing = windBearing;
     }
 
@@ -364,27 +364,27 @@ public class Data implements Parcelable {
         this.cloudCover = cloudCover;
     }
 
-    public int getUvIndex() {
+    public double getUvIndex() {
         return uvIndex;
     }
 
-    public void setUvIndex(int uvIndex) {
+    public void setUvIndex(double uvIndex) {
         this.uvIndex = uvIndex;
     }
 
-    public int getUvIndexTime() {
+    public double getUvIndexTime() {
         return uvIndexTime;
     }
 
-    public void setUvIndexTime(int uvIndexTime) {
+    public void setUvIndexTime(double uvIndexTime) {
         this.uvIndexTime = uvIndexTime;
     }
 
-    public int getVisibility() {
+    public double getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(int visibility) {
+    public void setVisibility(double visibility) {
         this.visibility = visibility;
     }
 
@@ -404,11 +404,11 @@ public class Data implements Parcelable {
         this.temperatureMin = temperatureMin;
     }
 
-    public int getTemperatureMinTime() {
+    public double getTemperatureMinTime() {
         return temperatureMinTime;
     }
 
-    public void setTemperatureMinTime(int temperatureMinTime) {
+    public void setTemperatureMinTime(double temperatureMinTime) {
         this.temperatureMinTime = temperatureMinTime;
     }
 
@@ -420,11 +420,11 @@ public class Data implements Parcelable {
         this.temperatureMax = temperatureMax;
     }
 
-    public int getTemperatureMaxTime() {
+    public double getTemperatureMaxTime() {
         return temperatureMaxTime;
     }
 
-    public void setTemperatureMaxTime(int temperatureMaxTime) {
+    public void setTemperatureMaxTime(double temperatureMaxTime) {
         this.temperatureMaxTime = temperatureMaxTime;
     }
 
@@ -436,11 +436,11 @@ public class Data implements Parcelable {
         this.apparentTemperatureMin = apparentTemperatureMin;
     }
 
-    public int getApparentTemperatureMinTime() {
+    public double getApparentTemperatureMinTime() {
         return apparentTemperatureMinTime;
     }
 
-    public void setApparentTemperatureMinTime(int apparentTemperatureMinTime) {
+    public void setApparentTemperatureMinTime(double apparentTemperatureMinTime) {
         this.apparentTemperatureMinTime = apparentTemperatureMinTime;
     }
 
@@ -452,11 +452,11 @@ public class Data implements Parcelable {
         this.apparentTemperatureMax = apparentTemperatureMax;
     }
 
-    public int getApparentTemperatureMaxTime() {
+    public double getApparentTemperatureMaxTime() {
         return apparentTemperatureMaxTime;
     }
 
-    public void setApparentTemperatureMaxTime(int apparentTemperatureMaxTime) {
+    public void setApparentTemperatureMaxTime(double apparentTemperatureMaxTime) {
         this.apparentTemperatureMaxTime = apparentTemperatureMaxTime;
     }
 

@@ -30,13 +30,13 @@ public class Currently implements Parcelable {
     private static final String UV_INDEX = "uvIndex";
     private static final String VISIBILITY = "visibility";
     private static final String OZONE = "ozone";
-    private int time;
+    private double time;
     private String summary;
     private String icon;
-    private int nearestStormDistance;
-    private int nearestStormBearing;
-    private int precipIntensity;
-    private int precipProbability;
+    private double nearestStormDistance;
+    private double nearestStormBearing;
+    private double precipIntensity;
+    private double precipProbability;
     private double temperature;
     private double apparentTemperature;
     private double dewPoint;
@@ -44,10 +44,10 @@ public class Currently implements Parcelable {
     private double pressure;
     private double windSpeed;
     private double windGust;
-    private int windBearing;
-    private int cloudCover;
-    private int uvIndex;
-    private int visibility;
+    private double windBearing;
+    private double cloudCover;
+    private double uvIndex;
+    private double visibility;
     private double ozone;
     public final static Parcelable.Creator<Currently> CREATOR = new Creator<Currently>() {
 
@@ -66,13 +66,13 @@ public class Currently implements Parcelable {
     };
 
     protected Currently(Parcel in) {
-        this.time = ((int) in.readValue((int.class.getClassLoader())));
+        this.time = ((double) in.readValue((double.class.getClassLoader())));
         this.summary = ((String) in.readValue((String.class.getClassLoader())));
         this.icon = ((String) in.readValue((String.class.getClassLoader())));
-        this.nearestStormDistance = ((int) in.readValue((int.class.getClassLoader())));
-        this.nearestStormBearing = ((int) in.readValue((int.class.getClassLoader())));
-        this.precipIntensity = ((int) in.readValue((int.class.getClassLoader())));
-        this.precipProbability = ((int) in.readValue((int.class.getClassLoader())));
+        this.nearestStormDistance = ((double) in.readValue((double.class.getClassLoader())));
+        this.nearestStormBearing = ((double) in.readValue((double.class.getClassLoader())));
+        this.precipIntensity = ((double) in.readValue((double.class.getClassLoader())));
+        this.precipProbability = ((double) in.readValue((double.class.getClassLoader())));
         this.temperature = ((double) in.readValue((double.class.getClassLoader())));
         this.apparentTemperature = ((double) in.readValue((double.class.getClassLoader())));
         this.dewPoint = ((double) in.readValue((double.class.getClassLoader())));
@@ -80,21 +80,21 @@ public class Currently implements Parcelable {
         this.pressure = ((double) in.readValue((double.class.getClassLoader())));
         this.windSpeed = ((double) in.readValue((double.class.getClassLoader())));
         this.windGust = ((double) in.readValue((double.class.getClassLoader())));
-        this.windBearing = ((int) in.readValue((int.class.getClassLoader())));
-        this.cloudCover = ((int) in.readValue((int.class.getClassLoader())));
-        this.uvIndex = ((int) in.readValue((int.class.getClassLoader())));
-        this.visibility = ((int) in.readValue((int.class.getClassLoader())));
+        this.windBearing = ((double) in.readValue((double.class.getClassLoader())));
+        this.cloudCover = ((double) in.readValue((double.class.getClassLoader())));
+        this.uvIndex = ((double) in.readValue((double.class.getClassLoader())));
+        this.visibility = ((double) in.readValue((double.class.getClassLoader())));
         this.ozone = ((double) in.readValue((double.class.getClassLoader())));
     }
 
     public Currently() {
     }
 
-    public int getTime() {
+    public double getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(double time) {
         this.time = time;
     }
 
@@ -114,35 +114,35 @@ public class Currently implements Parcelable {
         this.icon = icon;
     }
 
-    public int getNearestStormDistance() {
+    public double getNearestStormDistance() {
         return nearestStormDistance;
     }
 
-    public void setNearestStormDistance(int nearestStormDistance) {
+    public void setNearestStormDistance(double nearestStormDistance) {
         this.nearestStormDistance = nearestStormDistance;
     }
 
-    public int getNearestStormBearing() {
+    public double getNearestStormBearing() {
         return nearestStormBearing;
     }
 
-    public void setNearestStormBearing(int nearestStormBearing) {
+    public void setNearestStormBearing(double nearestStormBearing) {
         this.nearestStormBearing = nearestStormBearing;
     }
 
-    public int getPrecipIntensity() {
+    public double getPrecipIntensity() {
         return precipIntensity;
     }
 
-    public void setPrecipIntensity(int precipIntensity) {
+    public void setPrecipIntensity(double precipIntensity) {
         this.precipIntensity = precipIntensity;
     }
 
-    public int getPrecipProbability() {
+    public double getPrecipProbability() {
         return precipProbability;
     }
 
-    public void setPrecipProbability(int precipProbability) {
+    public void setPrecipProbability(double precipProbability) {
         this.precipProbability = precipProbability;
     }
 
@@ -202,35 +202,35 @@ public class Currently implements Parcelable {
         this.windGust = windGust;
     }
 
-    public int getWindBearing() {
+    public double getWindBearing() {
         return windBearing;
     }
 
-    public void setWindBearing(int windBearing) {
+    public void setWindBearing(double windBearing) {
         this.windBearing = windBearing;
     }
 
-    public int getCloudCover() {
+    public double getCloudCover() {
         return cloudCover;
     }
 
-    public void setCloudCover(int cloudCover) {
+    public void setCloudCover(double cloudCover) {
         this.cloudCover = cloudCover;
     }
 
-    public int getUvIndex() {
+    public double getUvIndex() {
         return uvIndex;
     }
 
-    public void setUvIndex(int uvIndex) {
+    public void setUvIndex(double uvIndex) {
         this.uvIndex = uvIndex;
     }
 
-    public int getVisibility() {
+    public double getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(int visibility) {
+    public void setVisibility(double visibility) {
         this.visibility = visibility;
     }
 
@@ -268,7 +268,7 @@ public class Currently implements Parcelable {
         Currently currently = new Currently();
         if (jsonObject != null){
             currently.setApparentTemperature(jsonObject.optDouble(APPARENT_TEMPERATURE));
-            currently.setCloudCover(jsonObject.optInt(CLOUD_COVER));
+            currently.setCloudCover(jsonObject.optDouble(CLOUD_COVER));
             currently.setDewPoint(jsonObject.optInt(DEW_POINT));
             currently.setHumidity(jsonObject.optDouble(HUMIDITY));
             currently.setIcon(jsonObject.optString(ICON));
@@ -290,9 +290,8 @@ public class Currently implements Parcelable {
         return currently;
     }
 
-
+    @Override
     public int describeContents() {
         return 0;
     }
-
 }
