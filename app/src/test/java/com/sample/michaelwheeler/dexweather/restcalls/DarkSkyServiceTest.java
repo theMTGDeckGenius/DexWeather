@@ -10,6 +10,7 @@ import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static org.junit.Assert.*;
 
@@ -22,8 +23,8 @@ public class DarkSkyServiceTest {
         MockWebServer mockWebServer = new MockWebServer();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(mockWebServer.url("").toString())
-                //TODO Add your Retrofit parameters here
+                .baseUrl(mockWebServer.url("https://api.darksky.net/").toString())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         mockWebServer.enqueue(new MockResponse().setBody(TestVariables.jsonResponse));
