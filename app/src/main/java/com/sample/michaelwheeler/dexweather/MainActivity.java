@@ -1,11 +1,14 @@
 package com.sample.michaelwheeler.dexweather;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 
+import com.sample.michaelwheeler.dexweather.objects.Data;
 import com.sample.michaelwheeler.dexweather.objects.Forecast;
 import com.sample.michaelwheeler.dexweather.restcalls.DarkSkyService;
 
@@ -16,6 +19,15 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     SwipeRefreshLayout mSwipe;
+
+    ForecastHandler mForecastHandler = new ForecastHandler() {
+        @Override
+        public void onclick(Data dayData) {
+            Intent intent = new Intent(MainActivity.this, FloatingActivity.class);
+            intent.putExtra("display", dayData.getSummary());
+            startActivity(intent);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call<Forecast> call, Response<Forecast> response) {
-                        if(response.isSuccessful()){
-                            ForecastAdapter adapter = new ForecastAdapter(response.body(), MainActivity.this);
+                        if (response.isSuccessful()) {
+                            ForecastAdapter adapter = new ForecastAdapter(response.body(), MainActivity.this, mForecastHandler);
                             recyclerView.setAdapter(adapter);
                             mSwipe.setRefreshing(false);
                         }
@@ -59,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<Forecast> call, Response<Forecast> response) {
-                if(response.isSuccessful()){
-                    ForecastAdapter adapter = new ForecastAdapter(response.body(), MainActivity.this);
+                if (response.isSuccessful()) {
+                    ForecastAdapter adapter = new ForecastAdapter(response.body(), MainActivity.this, mForecastHandler);
                     recyclerView.setAdapter(adapter);
                 }
             }
@@ -70,8 +82,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
-
-
 }

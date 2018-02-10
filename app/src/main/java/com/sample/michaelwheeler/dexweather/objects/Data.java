@@ -63,9 +63,9 @@ public class Data implements Parcelable {
     private double precipProbability;
     private String precipType;
     private String temperatureHigh;
-    private double temperatureHighTime;
+    private String temperatureHighTime;
     private String temperatureLow;
-    private double temperatureLowTime;
+    private String temperatureLowTime;
     private double apparentTemperatureHigh;
     private double apparentTemperatureHighTime;
     private double apparentTemperatureLow;
@@ -116,9 +116,9 @@ public class Data implements Parcelable {
         this.precipProbability = ((double) in.readValue((double.class.getClassLoader())));
         this.precipType = ((String) in.readValue((String.class.getClassLoader())));
         this.temperatureHigh = ((String) in.readValue((String.class.getClassLoader())));
-        this.temperatureHighTime = ((double) in.readValue((double.class.getClassLoader())));
+        this.temperatureHighTime = ((String) in.readValue((String.class.getClassLoader())));
         this.temperatureLow = ((String) in.readValue((String.class.getClassLoader())));
-        this.temperatureLowTime = ((double) in.readValue((double.class.getClassLoader())));
+        this.temperatureLowTime = ((String) in.readValue((String.class.getClassLoader())));
         this.apparentTemperatureHigh = ((double) in.readValue((double.class.getClassLoader())));
         this.apparentTemperatureHighTime = ((double) in.readValue((double.class.getClassLoader())));
         this.apparentTemperatureLow = ((double) in.readValue((double.class.getClassLoader())));
@@ -244,11 +244,11 @@ public class Data implements Parcelable {
         this.temperatureHigh = temperatureHigh;
     }
 
-    public double getTemperatureHighTime() {
+    public String getTemperatureHighTime() {
         return temperatureHighTime;
     }
 
-    public void setTemperatureHighTime(double temperatureHighTime) {
+    public void setTemperatureHighTime(String temperatureHighTime) {
         this.temperatureHighTime = temperatureHighTime;
     }
 
@@ -260,11 +260,11 @@ public class Data implements Parcelable {
         this.temperatureLow = temperatureLow;
     }
 
-    public double getTemperatureLowTime() {
+    public String getTemperatureLowTime() {
         return temperatureLowTime;
     }
 
-    public void setTemperatureLowTime(double temperatureLowTime) {
+    public void setTemperatureLowTime(String temperatureLowTime) {
         this.temperatureLowTime = temperatureLowTime;
     }
 
@@ -520,9 +520,9 @@ public class Data implements Parcelable {
                 data.setPrecipProbability(jsonObject.optDouble(SUMMARY));
                 data.setPrecipType(jsonObject.optString(SUMMARY));
                 data.setTemperatureHigh(jsonObject.optString(SUMMARY));
-                data.setTemperatureHighTime(jsonObject.optInt(SUMMARY));
+                data.setTemperatureHighTime(jsonObject.optString(SUMMARY));
                 data.setTemperatureLow(jsonObject.optString(SUMMARY));
-                data.setTemperatureLowTime(jsonObject.optInt(SUMMARY));
+                data.setTemperatureLowTime(jsonObject.optString(SUMMARY));
                 data.setApparentTemperatureHigh(jsonObject.optDouble(SUMMARY));
                 data.setApparentTemperatureHighTime(jsonObject.optInt(SUMMARY));
                 data.setApparentTemperatureLow(jsonObject.optDouble(SUMMARY));
