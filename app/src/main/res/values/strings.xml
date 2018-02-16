@@ -3,4 +3,6 @@
     <string name="low_temp">Low: ##TEMP##\u00B0F ##TIME##</string>
     <string name="high_temp">High: ##TEMP##\u00B0F ##TIME##</string>
     <string name="current_temp">Current: ##TEMP##\u00B0F</string>
+    <string name="temp">##TEMP##\u00B0F</string>
+    <string name="currently">Currently</string>
 </resources>

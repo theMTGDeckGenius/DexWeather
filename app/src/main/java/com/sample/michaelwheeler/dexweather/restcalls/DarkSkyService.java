@@ -11,6 +11,8 @@ import retrofit2.http.Path;
 
 /**
  * Created by Michael Wheeler on 2/8/2018.
+ *
+ * All DarkSky API calls
  */
 
 public interface DarkSkyService {
@@ -20,7 +22,8 @@ public interface DarkSkyService {
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
+    //554e4de8d1843a2198c20f70db4c4829
     @Headers("Accept: application/json")
-    @GET("forecast/554e4de8d1843a2198c20f70db4c4829/{LAT},{LNG}")
-    Call<Forecast> getFiveDayForecast(@Path("LAT") String lat, @Path("LNG") String lng);
+    @GET("forecast/{KEY}/{LAT},{LNG}")
+    Call<Forecast> getFiveDayForecast(@Path("KEY") String key, @Path("LAT") String lat, @Path("LNG") String lng);
 }

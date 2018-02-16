@@ -6,9 +6,6 @@ import android.os.Parcelable;
 
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Currently implements Parcelable {
 
     private static final String TIME = "time";
@@ -30,15 +27,15 @@ public class Currently implements Parcelable {
     private static final String UV_INDEX = "uvIndex";
     private static final String VISIBILITY = "visibility";
     private static final String OZONE = "ozone";
-    private double time;
+    private String time;
     private String summary;
     private String icon;
     private double nearestStormDistance;
     private double nearestStormBearing;
     private double precipIntensity;
     private double precipProbability;
-    private double temperature;
-    private double apparentTemperature;
+    private String temperature;
+    private String apparentTemperature;
     private double dewPoint;
     private double humidity;
     private double pressure;
@@ -66,15 +63,15 @@ public class Currently implements Parcelable {
     };
 
     protected Currently(Parcel in) {
-        this.time = ((double) in.readValue((double.class.getClassLoader())));
+        this.time = ((String) in.readValue((String.class.getClassLoader())));
         this.summary = ((String) in.readValue((String.class.getClassLoader())));
         this.icon = ((String) in.readValue((String.class.getClassLoader())));
         this.nearestStormDistance = ((double) in.readValue((double.class.getClassLoader())));
         this.nearestStormBearing = ((double) in.readValue((double.class.getClassLoader())));
         this.precipIntensity = ((double) in.readValue((double.class.getClassLoader())));
         this.precipProbability = ((double) in.readValue((double.class.getClassLoader())));
-        this.temperature = ((double) in.readValue((double.class.getClassLoader())));
-        this.apparentTemperature = ((double) in.readValue((double.class.getClassLoader())));
+        this.temperature = ((String) in.readValue((String.class.getClassLoader())));
+        this.apparentTemperature = ((String) in.readValue((String.class.getClassLoader())));
         this.dewPoint = ((double) in.readValue((double.class.getClassLoader())));
         this.humidity = ((double) in.readValue((double.class.getClassLoader())));
         this.pressure = ((double) in.readValue((double.class.getClassLoader())));
@@ -90,11 +87,11 @@ public class Currently implements Parcelable {
     public Currently() {
     }
 
-    public double getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(double time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -146,19 +143,19 @@ public class Currently implements Parcelable {
         this.precipProbability = precipProbability;
     }
 
-    public double getTemperature() {
+    public String getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(double temperature) {
+    public void setTemperature(String temperature) {
         this.temperature = temperature;
     }
 
-    public double getApparentTemperature() {
+    public String getApparentTemperature() {
         return apparentTemperature;
     }
 
-    public void setApparentTemperature(double apparentTemperature) {
+    public void setApparentTemperature(String apparentTemperature) {
         this.apparentTemperature = apparentTemperature;
     }
 
@@ -267,7 +264,7 @@ public class Currently implements Parcelable {
     public static Currently buildFromJSONObject(JSONObject jsonObject) {
         Currently currently = new Currently();
         if (jsonObject != null){
-            currently.setApparentTemperature(jsonObject.optDouble(APPARENT_TEMPERATURE));
+            currently.setApparentTemperature(jsonObject.optString(APPARENT_TEMPERATURE));
             currently.setCloudCover(jsonObject.optDouble(CLOUD_COVER));
             currently.setDewPoint(jsonObject.optInt(DEW_POINT));
             currently.setHumidity(jsonObject.optDouble(HUMIDITY));
@@ -279,8 +276,8 @@ public class Currently implements Parcelable {
             currently.setPrecipProbability(jsonObject.optInt(PRECIP_PROBABILITY));
             currently.setPressure(jsonObject.optDouble(PRESSURE));
             currently.setSummary(jsonObject.optString(SUMMARY));
-            currently.setTemperature(jsonObject.optDouble(TEMPERATURE));
-            currently.setTime(jsonObject.optInt(TIME));
+            currently.setTemperature(jsonObject.optString(TEMPERATURE));
+            currently.setTime(jsonObject.optString(TIME));
             currently.setUvIndex(jsonObject.optInt(UV_INDEX));
             currently.setVisibility(jsonObject.optInt(VISIBILITY));
             currently.setWindBearing(jsonObject.optInt(WIND_BEARING));

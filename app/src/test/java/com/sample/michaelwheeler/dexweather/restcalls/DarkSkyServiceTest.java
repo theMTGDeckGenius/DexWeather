@@ -4,7 +4,6 @@ import com.sample.michaelwheeler.dexweather.TestVariables;
 import com.sample.michaelwheeler.dexweather.objects.Forecast;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
@@ -30,7 +29,7 @@ public class DarkSkyServiceTest {
         mockWebServer.enqueue(new MockResponse().setBody(TestVariables.jsonResponse));
 
         DarkSkyService service = retrofit.create(DarkSkyService.class);
-        Call<Forecast> call = service.getFiveDayForecast("","");
+        Call<Forecast> call = service.getFiveDayForecast("","","");
         assertTrue(call.execute() != null);
         mockWebServer.shutdown();
     }
